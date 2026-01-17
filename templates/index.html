@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 35px;
+            border-radius: 18px;
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        input {
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .rock { background: #ff7675; }
+        .paper { background: #74b9ff; }
+        .scissors { background: #55efc4; }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .choices {
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .credit {
+            position: fixed;
+            bottom: 10px;
+            right: 15px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    {% if not player %}
+        <h1>Welcome 👋</h1>
+        <h2>Enter your name to start</h2>
+
+        <form method="POST">
+            <input type="text" name="player" placeholder="Your name" required>
+            <button style="margin-top:15px;background:#00cec9;">Start Game</button>
+        </form>
+
+    {% else %}
+        <h1>Hello {{ player }} 👋</h1>
+        <h2>Let’s play Rock Paper Scissors</h2>
+
+        <form method="POST">
+            <div class="buttons">
+                <button class="rock" name="choice" value="rock">Rock</button>
+                <button class="paper" name="choice" value="paper">Paper</button>
+                <button class="scissors" name="choice" value="scissors">Scissors</button>
+            </div>
+        </form>
+
+        {% if result %}
+            <div class="result">{{ result }}</div>
+            <div class="choices">
+                You chose: {{ user_choice }} <br>
+                Computer chose: {{ comp_choice }}
+            </div>
+        {% endif %}
+    {% endif %}
+
+</div>
+
+<div class="credit">by Somnath</div>
+
+</body>
+</html>

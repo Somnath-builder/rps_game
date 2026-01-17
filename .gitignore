@@ -1,3 +1,5 @@
-rpsScores.txt
 __pycache__/
 *.pyc
+.env
+venv/
+
